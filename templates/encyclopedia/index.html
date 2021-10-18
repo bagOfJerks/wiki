@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>{{ title }}</h1>
+
+    <ul>
+        {% for entry in entries %}
+            <!-- this generates a link to wiki/entry (looked up syntax in django documentation)-->
+            <!-- https://docs.djangoproject.com/en/dev/topics/http/urls/#reverse-resolution-of-urls-->
+            <li><a href= "{% url 'wiki' entry %}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

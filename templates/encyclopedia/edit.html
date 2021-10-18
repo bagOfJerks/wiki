@@ -1,0 +1,29 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit Entry
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Entry for {{ title }}</h1>
+    <div>
+        Edit Entry Here. See below for markup hints.
+    </div>
+
+    <form action="{% url 'edit' title %}" method="post">
+        {% csrf_token %}
+        {{ form.editEntryBody }}
+        <input type="submit">
+    </form>
+
+    <div>
+        <h2>Tips for Markdown Use</h2>
+            <ul>
+                {% for hint in markdownHints %}
+                    <li>{{ hint }}</li>
+                {% endfor %}
+            </ul>
+        <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">For complete guide to markdown, click here!</a>
+    </div>
+
+{% endblock %}
